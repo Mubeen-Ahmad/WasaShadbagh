@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Submit Report</title>
+    <!-- bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+</head>
+
+<body style="background-color: #212121;color: #fff; font-family: monospace, serif;letter-spacing: 0.05em;">
+    <!-- <link rel="stylesheet" href="submit.css"> -->
+
+    <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#949399;">
+                <span class="navbar-toggler-icon btn-primary" ></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./index.html">Metered & Aquifer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./disconnections.html">Disconnection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./generate.html">Submit Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                
+                
+                
+            </div>
+        </div>
+    </nav>
+
+    
+ 
+
+<div>
+                <h3 style="text-align: center;" class="py-3">Metered & Aquifer Report</h3>
+
+    <div class="table-responsive ">
+
+
+                <table class="table table-bordered table-condensed" cellpadding="0" cellspacing="0">
+
+                    <tbody>
+
+                        <tr id="m_a_0">
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Ward No</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Visited Area</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
+
+                                <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Consumer Name or Cell</td>
+
+                            
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Type</td>
+                            
+                            
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Connection</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Bill Amount</td>
+
+                             <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle; font-size: 13px;
+          ">Paid</td>       
+                            
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Remaining Arears</td>
+
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Monthly Demand</td>
+
+                                                                            </tr>
+        
+                    </tbody>
+                </table>
+    </div>
+    
+
+                    <h3 style="text-align: center;" class="py-3">Disconnections Report</h3>
+
+    <div class="table-responsive ">
+                <table class="table table-bordered table-condensed " cellpadding="0" cellspacing="0">
+                    <tbody>
+
+                        <tr id="d_0" class="info">
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Ward No</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Type</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Arrears</td>
+
+                             <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Connection</td>
+
+                                <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Property No</td>
+
+                                 <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Fir No</td>
+                            
+                           
+
+                                                                            </tr>
+        
+                    </tbody>
+                </table>
+    </div>
+
+
+        
+    
+    
+        
+        <div class="col-md-12 text-center my-4">
+            <button type"Submit" class="btn btn-success" onclick="check();" id="btn">Submit</button>
+            <!-- <button type="button" onclick="addrow();" class="btn btn-secondary">Add Column</button> -->
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+<script>
+    
+   
+    var table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="visted_arears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="consumer_name" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="bill_ammount" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="paid" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="monthly_demand" style="text-align: center; background-color:#89898f;"></th></tr>'
+
+
+    var dis_table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f; "></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="property_no" style="text-align: center; background-color:#89898f;" ></th><th scope="col" id="fir_no" style="text-align: center; background-color:#89898f;"></th</tr>'
+
+
+
+    function btn_lock(){
+                btn = document.getElementById('btn');
+                btn.setAttribute("class","btn btn-danger")
+                btn.innerHTML = "Submit Button are locked <br>first Input the valid Field"
+                btn.disabled = true;
+    }
+
+    function check_validations(k,v){
+        
+        //  ward_no is integer ?
+        if (v.id==="ward_no" || v.id==="account_no" || v.id==="bill_ammount" || v.id==="paid" || v.id === "monthly_demand"){
+            if(isNaN(Number(v.innerHTML))){
+                count += 1;
+
+                v.innerHTML += " (Only Numbers are Allowed)"
+                v.setAttribute("style","background:#c45025; text-align: center; ");
+                btn_lock();
+            }
+
+
+            
+        }
+    }
+
+
+    function check(){
+        flage = true
+        count = 0;
+    
+
+        v = Object.values(document.getElementsByTagName("tr"));
+        i = 0;
+        while (i<v.length){
+
+            if (v[i].id != 'm_a_0' && v[i].id != 'd_0'){
+
+                        val = v[i].getElementsByTagName("*")
+                         x = Object.values(val);
+
+                          Object.keys(x).forEach(key => {
+
+                            if (x[key].innerText == ""){
+                                
+                                x[key].style.background = "#2085a1";
+                                x[key].innerHTML = "Input Missing";
+                                btn_lock();
+                                console.log('empty')
+                                count += 1;
+                                
+                                
+                            }
+                            
+                            else if(x[key].innerText != "") {
+                                check_validations(v[i],x[key]);
+                            }
+                            
+
+                            
+                            
+                        });
+                        }
+
+        
+            
+            i+=1;
+        }
+
+                                                  
+        if (count==0){
+
+
+            merge = {}
+
+            send_data = localStorage
+             Object.keys(send_data).forEach(key => {
+                merge[key] = JSON.parse(send_data[key])
+                
+             })
+            
+                    function downloadObjectAsJson(exportObj, exportName){
+                    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+                    var downloadAnchorNode = document.createElement('a');
+                    downloadAnchorNode.setAttribute("href",     dataStr);
+                    downloadAnchorNode.setAttribute("download", exportName + ".json");
+                    document.body.appendChild(downloadAnchorNode); // required for firefox
+
+                    downloadAnchorNode.click();
+                    downloadAnchorNode.remove();
+                    } 
+               k1 = Object.keys(merge)[0]
+               
+               downloadObjectAsJson(merge,merge[k1]["ward_no"]);
+
+        }
+
+
+
+    }
+
+    function tr_checker() {
+        
+        total_id = [];
+                    tr = document.getElementsByTagName("tr");
+                    i = 0;
+
+                    while (i < tr.length) {
+                        
+                        sp = tr[i].id.split("_");
+                        
+                        if (sp[0] == 'm' && sp[1] == 'a') {
+                            id_ = sp.slice(-1)[0];
+                            total_id.push(id_)
+                        }
+                        i += 1;
+                    }
+
+                    total_id.sort();
+                    return next_row = total_id.slice(-1)[0];
+
+
+                }
+    
+    
+    function addrow(k,code,condition) {
+           
+            
+            t = document.getElementsByTagName("tr"); 
+            kk = Object.values(t); 
+            srt = []; 
+            i = 0; 
+            while(i<kk.length){
+                  
+                if (kk[i].id.split('_')[0]==condition){
+                     srt.push(kk[i].id); i+=1};
+                     
+                     i+=1;
+                
+                    }
+
+            document.getElementById(srt.slice(-1)[0]).insertAdjacentHTML("afterend", code);
+            delete srt;
+    
+    }
+
+    function meter_aqf(){
+                
+        get_data = {};
+        session = localStorage
+                    
+        Object.keys(session).forEach(key => {
+            
+            if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
+                get_data[key] = JSON.parse(session[key])
+                            }
+                });
+
+            // fill data
+
+            Object.keys(get_data).forEach(key => {
+            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+table,"m");
+         
+            document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
+            document.getElementById(key).getElementsByTagName("*").visted_arears.innerHTML = get_data[key]["visted_arears"];
+            document.getElementById(key).getElementsByTagName("*").account_no.innerHTML = get_data[key]["account_no"];
+            document.getElementById(key).getElementsByTagName("*").consumer_name.innerHTML = get_data[key]["consumer_name"];
+            document.getElementById(key).getElementsByTagName("*").type.innerHTML = get_data[key]["type"];
+            document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
+            total_bill = get_data[key]["bill_ammount"];
+            paid = get_data[key]["paid"];
+            document.getElementById(key).getElementsByTagName("*").bill_ammount.innerHTML = total_bill;
+            document.getElementById(key).getElementsByTagName("*").paid.innerHTML = paid
+            document.getElementById(key).getElementsByTagName("*").arrears.innerHTML = total_bill - paid;
+
+            
+            document.getElementById(key).getElementsByTagName("*").monthly_demand.innerHTML = get_data[key]["monthly_demand"];
+
+            
+        });
+
+    
+    }
+
+
+function disconnect(){
+                
+        get_data = {};
+        dsession = localStorage
+                    
+        Object.keys(dsession).forEach(key => {
+            
+            if (key.split("_")[0] == "d") {
+                get_data[key] = JSON.parse(dsession[key])
+                            }
+                });
+
+            // fill data
+            
+            Object.keys(get_data).forEach(key => {
+            addrow(key,'<tr class="table-secondary" id="'+key+'">'+dis_table,"d");
+            
+            document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
+            document.getElementById(key).getElementsByTagName("*").type.innerHTML = get_data[key]["type"];
+            document.getElementById(key).getElementsByTagName("*").account_no.innerHTML = get_data[key]["account_no"];
+            document.getElementById(key).getElementsByTagName("*").arrears.innerHTML = get_data[key]["arrears"];
+            document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
+            document.getElementById(key).getElementsByTagName("*").property_no.innerHTML = get_data[key]["property_no"];
+            document.getElementById(key).getElementsByTagName("*").fir_no.innerHTML = get_data[key]["fir_no"];
+            
+        });
+
+    
+    }
+
+
+
+meter_aqf();
+delete srt
+
+disconnect();
+
+
+</script>

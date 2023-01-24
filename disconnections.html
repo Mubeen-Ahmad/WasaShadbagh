@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Disconnection</title>
+    <!-- bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-color: #212121;color: #fff; font-family: monospace, serif;letter-spacing: 0.05em;">
+    <!-- <link rel="stylesheet" href="submit.css"> -->
+
+    <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#949399;"> 
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="./index.html">Metered & Aquifer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./disconnections.html">Disconnection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./generate.html">Submit Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+
+
+    <div>
+        <form >
+
+            <div class="form-group">
+                <div class="table-responsive ">
+                    <table class="table table-bordered table-condensed " cellpadding="0" cellspacing="0">
+                        
+                        <tbody>
+                            
+                            <tr id="d_0">
+                                
+                                <td class="bg-dark text-white text-center my-   "
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;"  >Ward No</td>
+
+                                <td class="bg-dark text-white text-center "
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;" >Type</td>
+
+                                <td class="bg-dark text-white text-center"
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
+
+                                <td class="bg-dark text-white text-center"
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;">Connection</td>
+
+                                <td class="bg-dark text-white text-center"
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;">Arrears Amount
+                                </td>
+
+                                <td class="bg-dark text-white text-center"
+                                    style="line-height:20px;  vertical-align: middle; font-size: 13px;">Property No
+                                </td>
+                                <td class="bg-dark text-white text-center" style="line-height:20px;  vertical-align: middle; font-size: 13px;">FIR NO
+                                </td>
+                                
+                                <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle;
+          font-size: 13px;">Actions</td>
+                            </tr>
+                            <!--  Add here rows -->
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+        </form>
+
+
+        
+        <div class="col-md-12 text-center my-4">
+            <!-- <button type"Submit" class="btn btn-success" required ">Submit</button> -->
+      <button type="button" onclick="addrow();" class="btn btn-secondary">Add Column</button>
+
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+<script> 
+
+     window.onload = (event) => {
+            store_session();
+        };
+
+
+    html_row = "<td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input  id='ward_no' type='tel' class='form-control bg-warning text-dark' style='width:120px; margin-left:auto; margin-right:auto;'  name='ward_no'  title='Only Numbers Allow'  pattern='[0-9]+' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select style='width:120px; margin-left:auto; margin-right:auto;' name='type' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.value);' required class='form-control bg-warning text-dark' id='type'><option value='' selected disabled hidden >Choose here</option><option  value='illegal'>Illegal</option><option value='defaulter'>Defaulter</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input  id='account_no' type='tel' class='form-control bg-warning text-dark' style='width:120px; margin-left:auto; margin-right:auto;'  name='account_no'  title='Only Numbers Allow' required pattern='[0-9]+' autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.value);' id='con' name='con' required class='form-control bg-warning text-dark' style='width:120px; margin-left:auto; margin-right:auto;' ><option value='' selected disabled hidden >Choose here</option><option  value='domestic'>Domestic</option><option value='commercial'>Commercial</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;' ><input  id='arrears' type='tel' class='form-control bg-warning text-dark'    pattern='[0-9]+' title='Only Numbers Allow' required name='arrears' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").arrears.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").arrears.value);' style='width:150px; margin-left:auto; margin-right:auto;'/></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='property_no'  type='text' class='form-control bg-warning text-dark' style='width:120px; margin-left:auto; margin-right:auto;'  name='property_no' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").property_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").property_no.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px; '><input id='fir_no' type='text' class='form-control bg-warning text-dark'  style='margin-left: auto;margin-right: auto;width: 120px; margin-left:auto; margin-right:auto;'  pattern='[0-9]+' title='Only Numbers Allow' required name='fir_no' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").fir_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").fir_no.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><button type='button' class='form-control delete btn btn-danger' onClick='remove($(this));');'>Delete</button></td></tr>";
+
+
+    function tr_checker() {
+    
+        total_id = [];
+        tr = document.getElementsByTagName("tr");
+        i = 0;
+        
+        while (i < tr.length) {
+            sp = tr[i].id.split("_");
+            
+            if (sp[0] == 'd') {
+                id_ = sp.slice(-1)[0];
+                total_id.push(id_)
+            }
+        i+=1;
+    }
+
+    total_id.sort();
+    
+    return next_row = total_id.slice(-1)[0];
+
+
+    }
+    
+    function addrow(){
+        id_ = parseInt(tr_checker());
+        id_+=1;
+        var rows = "<tr id='"+'d_'+id_+"'>"+html_row;
+
+        document.getElementById(("d_"+(id_-1))).insertAdjacentHTML("afterend", rows);
+        
+        var attr = {
+            ward_no:"",
+            type: "",
+            account_no: "",
+            con: "",
+            arrears: "",
+            property_no: "",
+            fir_no: "",
+        }
+
+        localStorage.setItem('d_' + id_, JSON.stringify(attr));
+
+    }
+    
+    function remove(tr) {
+        
+        remove_id = tr.closest("tr").attr("id");
+        
+        localStorage.removeItem(remove_id);
+        tr.closest("tr").remove();
+    } 
+
+    function save(id, k, v) {
+
+        //data[id] = data[id] || {};
+        //data[id][k] = v;
+    
+        var temp = JSON.parse(localStorage.getItem(id));
+        temp[k] = v;
+        localStorage.setItem(id, JSON.stringify(temp));
+
+
+
+            //current_id = x.closest('tr')[0].id 
+            //console.log(x.closest('tr')[0].getElementsByTagName("*").ward_no.value);
+        }
+    
+    
+    function store_session(){
+        
+        session = localStorage
+        session_data = {};
+        session_keys = [];
+
+        
+        Object.keys(session).forEach(key => {
+            
+            if (key.split("_")[0] == "d") {
+                session_data[key] = JSON.parse(session[key])
+                session_keys.push(key.split("_").slice(-1)[0]);
+            }
+        });
+
+        session_keys.sort();
+
+       Object.keys(session_keys).forEach(load_key =>{
+        
+            add = "<tr id='" + 'd_'+session_keys[load_key]+"' class='py-1' >" + html_row;
+            document.getElementById('d_' + tr_checker()).insertAdjacentHTML("afterend",add);
+            
+            load_data = localStorage.getItem('d_' +session_keys[load_key]);
+            get = JSON.parse(load_data);
+
+            browser_data = document.getElementById('d_' + session_keys[load_key]).getElementsByTagName("*");
+            
+            browser_data.ward_no.value = get.ward_no;
+            browser_data.type.value = get.type;
+            browser_data.account_no.value = get.account_no;
+            browser_data.con.value = get.con;
+            browser_data.arrears.value = get.arrears;
+            browser_data.property_no.value = get.property_no;
+            browser_data.fir_no.value = get.fir_no;
+
+        });
+    }
+            </script>
+        
+
+</html>

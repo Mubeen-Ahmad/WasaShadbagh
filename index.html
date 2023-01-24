@@ -1,0 +1,295 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Water And Aquifer</title>
+    <!-- bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-color: #212121;color: #fff; font-family: monospace, serif;letter-spacing: 0.05em;">
+
+    <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#9099a2;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Metered & Aquifer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./disconnections.html">Disconnection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./generate.html">Submit Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+
+    <div>
+       
+       
+        <form onsubmit="send();">
+
+        <div class="form-group">
+            <div class="table-responsive ">
+                <table class="table table-bordered table-condensed" cellpadding="0" cellspacing="0">
+
+                    <tbody>
+
+                        <tr id="m_a_0">
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Ward No</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Visited Area</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
+
+                                <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Consumer Name or Cell </td>
+
+                            
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Type</td>
+                            
+                            
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Connection</td>
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Bill Amount</td>
+
+                             <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle; font-size: 13px;
+          ">Paid</td>       
+                            
+
+
+                            <td class="bg-dark text-white text-center"
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Monthly Demand</td>
+
+                           
+
+                            <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle;
+          font-size: 13px;">Actions</td>
+                        </tr>
+                        <!--  Add here rows -->
+
+
+                    </tbody>
+                </table>
+            </div>
+
+    </form>
+
+
+        <div class="col-md-12 text-center my-4">
+            <!-- <button type"button" class="btn btn-success"  required >Submit</button> -->
+      <button type="button" onclick="addrow();" class="btn btn-secondary">Add Column</button>
+
+
+</div>
+
+</div>
+
+</div>
+</body>
+
+     <script>
+    window.onload = (event) => {
+        store_session();
+
+    };
+            function send(){
+
+                    get_data = {};
+                    session = localStorage
+                    
+
+                        Object.keys(session).forEach(key => {
+
+                            if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
+                                get_data[key] = JSON.parse(session[key])
+                            }
+                        });
+
+                    //session_keys.sort();
+                 function downloadObjectAsJson(exportObj, exportName){
+                    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+                    var downloadAnchorNode = document.createElement('a');
+                    downloadAnchorNode.setAttribute("href",     dataStr);
+                    downloadAnchorNode.setAttribute("download", exportName + ".json");
+                    document.body.appendChild(downloadAnchorNode); // required for firefox
+                    downloadAnchorNode.click();
+                    downloadAnchorNode.remove();
+                    } 
+               k1 = Object.keys(get_data)[0]
+               downloadObjectAsJson(get_data,get_data[k1]["ward_no"]);
+            }
+
+
+            /*
+            ward_no
+
+           account_no
+            consumer_name
+            consumer_cell
+            type
+            con
+            bill_ammbrowser_data.type.value = get.type;ount
+            paid
+            arrears
+            monthly_demand
+
+            
+            */
+
+            var html_row = "'><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='ward_no' type='tel' class='form-control bg-warning text-dark'  style='width:80px;'  name='ward_no'  title='Ward No'  pattern='[0-9]+' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input  id='visted_arears' type='text' class='form-control bg-warning text-dark'  style='width:150px;' name='visted_arears'  title='Visted Area' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").visted_arears.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").visted_arears.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='account_no' type='tel' class='form-control bg-warning text-dark' style='width:160px;'  name='account_no' pattern='[0-9]+' title='Only Numbers Allow' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input style='width:150px;'  id='consumer_name' type='text' class='form-control bg-warning text-dark'  name='consumer_name'  title='Consumer Name' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").consumer_name.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").consumer_name.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select style='width:100px;' name='type' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.value);' required class='form-control bg-warning text-dark' id='type'><option value='' selected disabled hidden >Choose here</option><option  value='Aquifer'>Aquifer</option><option value='water_sewer'>Water & Sewer</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.value);' id='con' style='width:120px;' name='con' required class='form-control bg-warning text-dark' ><option value='' selected disabled hidden >Choose here</option><option  value='domestic'>Domestic</option><option value='commercial'>Commercial</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input style='width:130px;' id='bill_ammount' type='tel' class='form-control bg-warning text-dark'  pattern='[0-9]+' title='Only Numbers Allow' required name='bill_ammount' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").bill_ammount.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").bill_ammount.value);' /></td><td class='bg-dark text-white text-center'  style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='paid' type='tel' class='form-control bg-warning text-dark' style='width:150px;' pattern='[0-9]+' title='Only Numbers Allow' required name='paid' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").paid.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").paid.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='monthly_demand' type='tel' class='form-control bg-warning text-dark' style='width:100px;' pattern='[0-9]+' title='Only Numbers Allow' required name='monthly_demand' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").monthly_demand.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").monthly_demand.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><button type='button' class='form-control delete btn btn-danger' onClick='remove($(this));');'>Delete</button></td></tr>";
+
+            
+            function tr_checker() {
+
+                    total_id = [];
+                    tr = document.getElementsByTagName("tr");
+                    i = 0;
+
+                    while (i < tr.length) {
+                        
+                        sp = tr[i].id.split("_");
+                        
+                        if (sp[0] == 'm' && sp[1] == 'a') {
+                            id_ = sp.slice(-1)[0];
+                            total_id.push(id_)
+                        }
+                        i += 1;
+                    }
+
+                    total_id.sort();
+                    return next_row = total_id.slice(-1)[0];
+
+
+                }
+
+                function addrow() {
+                        id_ = parseInt(tr_checker());
+                        id_ += 1;
+                        
+                        var rows = "<tr id='" +'m_a_'+id_+html_row;
+                        document.getElementById(("m_a_" + (id_ - 1))).insertAdjacentHTML("afterend", rows);
+
+                    var attr = {
+                         
+                         ward_no:"",
+                         visted_arears:"",
+                         account_no:"",
+                         consumer_name:"",
+                         type:"",
+                         con:"",
+                         bill_ammount:"",
+                         paid:"",
+                         monthly_demand:""
+                    }
+
+                    localStorage.setItem('m_a_' + id_, JSON.stringify(attr));
+
+                }
+
+                function remove(tr) {
+
+                    remove_id = tr.closest("tr").attr("id");
+
+                    localStorage.removeItem(remove_id);
+                    tr.closest("tr").remove();
+                }
+
+                function save(id, k, v) {
+
+                    //data[id] = data[id] || {};
+                    //data[id][k] = v;
+
+                    var temp = JSON.parse(localStorage.getItem(id));
+                    temp[k] = v;
+                    localStorage.setItem(id, JSON.stringify(temp));
+
+
+
+                    //current_id = x.closest('tr')[0].id 
+                    //console.log(x.closest('tr')[0].getElementsByTagName("*").ward_no.value);
+                }
+
+
+                function store_session() {
+
+                    session = localStorage
+                    session_data = {};
+                    session_keys = [];
+
+
+                    Object.keys(session).forEach(key => {
+
+                        if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
+                            session_data[key] = JSON.parse(session[key])
+                            session_keys.push(key.split("_").slice(-1)[0]);
+                        }
+                    });
+
+                    session_keys.sort();
+
+                    Object.keys(session_keys).forEach(load_key => {
+
+                        add = "<tr id='" + 'm_a_' + session_keys[load_key] + html_row;
+                        document.getElementById('m_a_' + tr_checker()).insertAdjacentHTML("afterend", add);
+
+                        load_data = localStorage.getItem('m_a_' + session_keys[load_key]);
+                        get = JSON.parse(load_data);
+
+                        browser_data = document.getElementById('m_a_' + session_keys[load_key]).getElementsByTagName("*");
+                        
+                        browser_data.ward_no.value = get.ward_no;
+                        browser_data.visted_arears.value = get.visted_arears;
+                        browser_data.account_no.value = get.account_no;
+                        browser_data.consumer_name.value = get.consumer_name;
+                        browser_data.type.value = get.type;
+                        browser_data.con.value = get.con;
+                        browser_data.bill_ammount.value = get.bill_ammount;
+                        browser_data.paid.value = get.paid;
+                        browser_data.monthly_demand.value = get.monthly_demand;
+
+                    });
+                }
+            
+
+        </script>   
+        
+
+</html>
