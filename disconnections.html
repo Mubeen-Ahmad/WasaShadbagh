@@ -141,7 +141,7 @@
         i+=1;
     }
 
-    total_id.sort();
+    total_id.sort((a, b) => a - b).join(', ')
     
     return next_row = total_id.slice(-1)[0];
 
@@ -208,7 +208,7 @@
             }
         });
 
-        session_keys.sort();
+        session_keys.sort((a, b) => a - b).join(', ')
 
        Object.keys(session_keys).forEach(load_key =>{
         
