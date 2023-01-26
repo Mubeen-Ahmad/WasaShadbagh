@@ -173,7 +173,21 @@
 
 
     var dis_table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f; "></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="property_no" style="text-align: center; background-color:#89898f;" ></th><th scope="col" id="fir_no" style="text-align: center; background-color:#89898f;"></th</tr>'
+    
+    total_code_mq = '<th scope="col"  style="text-align: center; border: none; color:#212529;">.</th><th scope="col"     style="text-align: left;  border: none;">Totals Accounts</th><th scope="col"  style="text-align: center; border: none;" id ="totals_acc_mq">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th><th scope="col"  style="text-align: right; border: none;  color:#212529;">.</th><th scope="col" style="text-align: right; border: none;">Totals</th><th scope="col" style="text-align: left; border: none;">Paid</th><th scope="col" id="totals_pd_mq" style="text-align: center; border: none;">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;" >.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th></tr>'  
 
+    total_code_dis = '<th scope="col" style="text-align: right; border: none;">Total</th><th scope="col"  style="text-align: Left; border: none;">Disconnections</th><th scope="col" style="text-align: center; border: none; " id="total_dis_con" >.</th><th scope="col"  style="text-align: center; border: none; ">Total Arrears</th><th scope="col" id="dis_arrs" style="text-align: center; border: none;" >.</th><th scope="col" style="text-align: center; border: none; color:#212529;" >.</th><th scope="col" id="fir_no" style="text-align: center; border: none; color:#212529;">.</th</tr>'
+
+    function add_total(lst,code){
+
+            //document.getElementsByTagName("table")[0].insertAdjacentHTML("afterend", code)
+            if (document.getElementById(lst)){
+            document.getElementById(lst).insertAdjacentHTML("afterend", code);;
+            return 1
+        }
+        return 0;
+
+    }
 
 
     function btn_lock(){
@@ -299,24 +313,27 @@
                 }
     
     
-    function addrow(k,code,condition) {
-           
+    function addrow(k,code,condition,id_type,code_type) {
             
+            st = []
             t = document.getElementsByTagName("tr"); 
-            kk = Object.values(t); 
-            srt = []; 
-            i = 0; 
-            while(i<kk.length){
-                  
-                if (kk[i].id.split('_')[0]==condition){
-                     srt.push(kk[i].id); i+=1};
-                     
-                     i+=1;
-                
-                    }
 
-            document.getElementById(srt.slice(-1)[0]).insertAdjacentHTML("afterend", code);
-            delete srt;
+            r = 0;
+            while(r<t.length){
+                if (t[r].id.split("_")[0]==condition){
+                st.push(parseInt(t[r].id.split("_").slice(-1)[0]));}
+            
+            r+=1;
+            }
+
+            st.sort((a, b) => a - b).join(', ')
+
+            last = st.slice(-1)[0] 
+            document.getElementById(id_type+last).insertAdjacentHTML("afterend", code);
+            
+            
+            
+        
     
     }
 
@@ -324,18 +341,35 @@
                 
         get_data = {};
         session = localStorage
-                    
+        th_key = []
+
         Object.keys(session).forEach(key => {
             
             if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
                 get_data[key] = JSON.parse(session[key])
+                th_key.push(parseInt(key.split("_").slice(-1)[0]))
                             }
                 });
+            
 
-            // fill data
+                    
+        th_key.sort((a, b) => a - b).join(', ')
+       // document.getElementById("m_a_0").insertAdjacentHTML("afterend", new_id+table);
+        i = 0;
+        while(i<th_key.length){
+            key = "m_a_"+th_key[i];
+            
+            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+table,"m","m_a_");
 
-            Object.keys(get_data).forEach(key => {
-            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+table,"m");
+
+            
+            i+=1
+            
+        }
+
+        pd = 0
+
+        Object.keys(get_data).forEach(key => {
          
             document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
             document.getElementById(key).getElementsByTagName("*").visted_arears.innerHTML = get_data[key]["visted_arears"];
@@ -345,6 +379,7 @@
             document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
             total_bill = get_data[key]["bill_ammount"];
             paid = get_data[key]["paid"];
+            pd += parseInt(paid)
             document.getElementById(key).getElementsByTagName("*").bill_ammount.innerHTML = total_bill;
             document.getElementById(key).getElementsByTagName("*").paid.innerHTML = paid
             document.getElementById(key).getElementsByTagName("*").arrears.innerHTML = total_bill - paid;
@@ -355,27 +390,59 @@
             
         });
 
+        lst = "m_a_"+th_key.slice(-1)[0];
+        
+        code_ = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_mq'+'">'+total_code_mq
+        
     
+        flag = add_total(lst,code_)
+        
+        if (flag==1){
+        document.getElementById("totals_acc_mq").innerHTML = th_key.length;
+        document.getElementById("totals_pd_mq").innerHTML = pd;
+        }
     }
-
-
+           
+           
+           
 function disconnect(){
                 
         get_data = {};
         dsession = localStorage
+        dis_key = [];
                     
         Object.keys(dsession).forEach(key => {
             
             if (key.split("_")[0] == "d") {
                 get_data[key] = JSON.parse(dsession[key])
-                            }
-                });
+                dis_key.push(parseInt(key.split("_").slice(-1)[0]))
 
-            // fill data
+                }
+                });
+           
+           
+                dis_key.sort((a, b) => a - b).join(', ');
             
+
+        i = 0;
+        while(i<dis_key.length){
+            key = "d_"+dis_key[i];
+            console.log(key)
+
+            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+dis_table,"d","d_");
+
+
+            
+            i+=1;
+
+        }
+
+            
+           
+           
+           // fill data
+            total_dis_arr = 0;
             Object.keys(get_data).forEach(key => {
-            addrow(key,'<tr class="table-secondary" id="'+key+'">'+dis_table,"d");
-            
             document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
             document.getElementById(key).getElementsByTagName("*").type.innerHTML = get_data[key]["type"];
             document.getElementById(key).getElementsByTagName("*").account_no.innerHTML = get_data[key]["account_no"];
@@ -383,8 +450,22 @@ function disconnect(){
             document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
             document.getElementById(key).getElementsByTagName("*").property_no.innerHTML = get_data[key]["property_no"];
             document.getElementById(key).getElementsByTagName("*").fir_no.innerHTML = get_data[key]["fir_no"];
+            total_dis_arr += parseInt(get_data[key]["arrears"]);
+
             
         });
+
+
+        lst_d = "d_"+dis_key.slice(-1)[0];
+        code_d = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_dis'+'">'+total_code_dis
+    
+        flag = add_total(lst_d,code_d)
+        if (flag==1){
+                    
+
+        document.getElementById("total_dis_con").innerHTML = dis_key.length;
+        document.getElementById("dis_arrs").innerHTML = total_dis_arr;
+        }
 
     
     }
@@ -392,8 +473,7 @@ function disconnect(){
 
 
 meter_aqf();
-delete srt
-
+    
 disconnect();
 
 
