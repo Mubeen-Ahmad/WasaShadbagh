@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Submit Report</title>
+    <title>Water And Aquifer</title>
     <!-- bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -22,53 +22,46 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-
-
 </head>
 
 <body style="background-color: #212121;color: #fff; font-family: monospace, serif;letter-spacing: 0.05em;">
-    <!-- <link rel="stylesheet" href="submit.css"> -->
 
     <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Welcome</a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#949399;">
-                <span class="navbar-toggler-icon btn-primary" ></span>
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#9099a2;">
+                <span class="navbar-toggler-icon"></span>
             </button>
-
+            
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Metered & Aquifer</a>
+                        <a class="nav-link active" aria-current="page" href="./index.html">Metered & Aquifer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./disconnections.html">Disconnection</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./generate.html">Submit Report</a>
+                        <a class="nav-link" href="./generate.html">Submit Report</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
                 
-                
-                
             </div>
         </div>
     </nav>
 
-    
- 
 
-<div>
-                <h3 style="text-align: center;" class="py-3">Metered & Aquifer Report</h3>
+    <div>
+       
+       
+        <form onsubmit="send();">
 
-    <div class="table-responsive ">
-
-
+        <div class="form-group">
+            <div class="table-responsive ">
                 <table class="table table-bordered table-condensed" cellpadding="0" cellspacing="0">
 
                     <tbody>
@@ -84,7 +77,7 @@
                                 style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
 
                                 <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Consumer Name or Cell</td>
+                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Consumer Name or Cell </td>
 
                             
                             <td class="bg-dark text-white text-center"
@@ -100,381 +93,203 @@
                              <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle; font-size: 13px;
           ">Paid</td>       
                             
-                            <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Remaining Arears</td>
 
 
                             <td class="bg-dark text-white text-center"
                                 style="line-height:20px;  vertical-align: middle; font-size: 13px;">Monthly Demand</td>
 
-                                                                            </tr>
-        
-                    </tbody>
-                </table>
-    </div>
-    
-
-                    <h3 style="text-align: center;" class="py-3">Disconnections Report</h3>
-
-    <div class="table-responsive ">
-                <table class="table table-bordered table-condensed " cellpadding="0" cellspacing="0">
-                    <tbody>
-
-                        <tr id="d_0" class="info">
-                            <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Ward No</td>
-
-                            <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Type</td>
-
-                            <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Account No</td>
-
-                            <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Arrears</td>
-
-                             <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Connection</td>
-
-                                <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Property No</td>
-
-                                 <td class="bg-dark text-white text-center"
-                                style="line-height:20px;  vertical-align: middle; font-size: 13px;">Fir No</td>
-                            
                            
 
-                                                                            </tr>
-        
+                            <td class="bg-dark text-white text-center" style="line-height:10px;  vertical-align: middle;
+          font-size: 13px;">Actions</td>
+                        </tr>
+                        <!--  Add here rows -->
+
+
                     </tbody>
                 </table>
-    </div>
+            </div>
+
+    </form>
 
 
-        
-    
-    
-        
         <div class="col-md-12 text-center my-4">
-            <button type"Submit" class="btn btn-success" onclick="check();" id="btn">Submit</button>
-            <!-- <button type="button" onclick="addrow();" class="btn btn-secondary">Add Column</button> -->
-        </div>
+            <!-- <button type"button" class="btn btn-success"  required >Submit</button> -->
+      <button type="button" onclick="addrow();" class="btn btn-secondary">Add Column</button>
 
-
-    </div>
 
 </div>
 
+</div>
+
+</div>
 </body>
-<script>
-    
-   
-    var table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="visted_arears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="consumer_name" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="bill_ammount" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="paid" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="monthly_demand" style="text-align: center; background-color:#89898f;"></th></tr>'
 
+     <script>
+    window.onload = (event) => {
+        store_session();
 
-    var dis_table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f; "></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="property_no" style="text-align: center; background-color:#89898f;" ></th><th scope="col" id="fir_no" style="text-align: center; background-color:#89898f;"></th</tr>'
-    
-    total_code_mq = '<th scope="col"  style="text-align: center; border: none; color:#212529;">.</th><th scope="col"     style="text-align: left;  border: none;">Totals Accounts</th><th scope="col"  style="text-align: center; border: none;" id ="totals_acc_mq">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th><th scope="col"  style="text-align: right; border: none;  color:#212529;">.</th><th scope="col" style="text-align: right; border: none;">Totals</th><th scope="col" style="text-align: left; border: none;">Paid</th><th scope="col" id="totals_pd_mq" style="text-align: center; border: none;">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;" >.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th></tr>'  
+    };
+            function send(){
 
-    total_code_dis = '<th scope="col" style="text-align: right; border: none;">Total</th><th scope="col"  style="text-align: Left; border: none;">Disconnections</th><th scope="col" style="text-align: center; border: none; " id="total_dis_con" >.</th><th scope="col"  style="text-align: center; border: none; ">Total Arrears</th><th scope="col" id="dis_arrs" style="text-align: center; border: none;" >.</th><th scope="col" style="text-align: center; border: none; color:#212529;" >.</th><th scope="col" id="fir_no" style="text-align: center; border: none; color:#212529;">.</th</tr>'
+                    get_data = {};
+                    session = localStorage
+                    
 
-    function add_total(lst,code){
+                        Object.keys(session).forEach(key => {
 
-            //document.getElementsByTagName("table")[0].insertAdjacentHTML("afterend", code)
-            if (document.getElementById(lst)){
-            document.getElementById(lst).insertAdjacentHTML("afterend", code);;
-            return 1
-        }
-        return 0;
-
-    }
-
-
-    function btn_lock(){
-                btn = document.getElementById('btn');
-                btn.setAttribute("class","btn btn-danger")
-                btn.innerHTML = "Submit Button are locked <br>first Input the valid Field"
-                btn.disabled = true;
-    }
-
-    function check_validations(k,v){
-        
-        //  ward_no is integer ?
-        if (v.id==="ward_no" || v.id==="account_no" || v.id==="bill_ammount" || v.id==="paid" || v.id === "monthly_demand"){
-            if(isNaN(Number(v.innerHTML))){
-                count += 1;
-
-                v.innerHTML += " (Only Numbers are Allowed)"
-                v.setAttribute("style","background:#c45025; text-align: center; ");
-                btn_lock();
-            }
-
-
-            
-        }
-    }
-
-
-    function check(){
-        flage = true
-        count = 0;
-    
-
-        v = Object.values(document.getElementsByTagName("tr"));
-        i = 0;
-        while (i<v.length){
-
-            if (v[i].id != 'm_a_0' && v[i].id != 'd_0'){
-
-                        val = v[i].getElementsByTagName("*")
-                         x = Object.values(val);
-
-                          Object.keys(x).forEach(key => {
-
-                            if (x[key].innerText == ""){
-                                
-                                x[key].style.background = "#2085a1";
-                                x[key].innerHTML = "Input Missing";
-                                btn_lock();
-                                console.log('empty')
-                                count += 1;
-                                
-                                
+                            if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
+                                get_data[key] = JSON.parse(session[key])
                             }
-                            
-                            else if(x[key].innerText != "") {
-                                check_validations(v[i],x[key]);
-                            }
-                            
-
-                            
-                            
                         });
-                        }
 
-        
-            
-            i+=1;
-        }
-
-                                                  
-        if (count==0){
-
-
-            merge = {}
-
-            send_data = localStorage
-             Object.keys(send_data).forEach(key => {
-                merge[key] = JSON.parse(send_data[key])
-                
-             })
-            
-                    function downloadObjectAsJson(exportObj, exportName){
+                    //session_keys.sort();
+                 function downloadObjectAsJson(exportObj, exportName){
                     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
                     var downloadAnchorNode = document.createElement('a');
                     downloadAnchorNode.setAttribute("href",     dataStr);
                     downloadAnchorNode.setAttribute("download", exportName + ".json");
                     document.body.appendChild(downloadAnchorNode); // required for firefox
-
                     downloadAnchorNode.click();
                     downloadAnchorNode.remove();
                     } 
-               k1 = Object.keys(merge)[0]
-               
-               downloadObjectAsJson(merge,merge[k1]["ward_no"]);
-
-        }
+               k1 = Object.keys(get_data)[0]
+               downloadObjectAsJson(get_data,get_data[k1]["ward_no"]);
+            }
 
 
+            /*
+            ward_no
 
-    }
+           account_no
+            consumer_name
+            consumer_cell
+            type
+            con
+            bill_ammbrowser_data.type.value = get.type;ount
+            paid
+            arrears
+            monthly_demand
 
-    function tr_checker() {
-        
-        total_id = [];
+            
+            */
+
+            var html_row = "'><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='ward_no' type='tel' class='form-control bg-warning text-dark'  style='width:80px;'  name='ward_no'  title='Ward No'  pattern='[0-9]+' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").ward_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input  id='visted_arears' type='text' class='form-control bg-warning text-dark'  style='width:150px;' name='visted_arears'  title='Visted Area' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").visted_arears.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").visted_arears.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='account_no' type='tel' class='form-control bg-warning text-dark' style='width:160px;'  name='account_no' pattern='[0-9]+' title='Only Numbers Allow' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").account_no.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input style='width:150px;'  id='consumer_name' type='text' class='form-control bg-warning text-dark'  name='consumer_name'  title='Consumer Name' required autocomplete='off'  oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").consumer_name.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").consumer_name.value);' ></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select style='width:100px;' name='type' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").type.value);' required class='form-control bg-warning text-dark' id='type'><option value='' selected disabled hidden >Choose here</option><option  value='Aquifer'>Aquifer</option><option value='water_sewer'>Water & Sewer</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><select oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").con.value);' id='con' style='width:120px;' name='con' required class='form-control bg-warning text-dark' ><option value='' selected disabled hidden >Choose here</option><option  value='domestic'>Domestic</option><option value='commercial'>Commercial</option></select></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input style='width:130px;' id='bill_ammount' type='tel' class='form-control bg-warning text-dark'  pattern='[0-9]+' title='Only Numbers Allow' required name='bill_ammount' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").bill_ammount.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").bill_ammount.value);' /></td><td class='bg-dark text-white text-center'  style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='paid' type='tel' class='form-control bg-warning text-dark' style='width:150px;' pattern='[0-9]+' title='Only Numbers Allow' required name='paid' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").paid.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").paid.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><input id='monthly_demand' type='tel' class='form-control bg-warning text-dark' style='width:100px;' pattern='[0-9]+' title='Only Numbers Allow' required name='monthly_demand' autocomplete='off' oninput='save($(this).closest(\"tr\")[0].id,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").monthly_demand.name,$(this).closest(\"tr\")[0].getElementsByTagName(\"*\").monthly_demand.value);' /></td><td class='bg-dark text-white text-center' style='line-height:20px;  vertical-align: middle; font-size: 13px;'><button type='button' class='form-control delete btn btn-danger' onClick='remove($(this));');'>Delete</button></td></tr>";
+
+            
+            function tr_checker() {
+
+                    total_id = [];
                     tr = document.getElementsByTagName("tr");
                     i = 0;
-
+                    
                     while (i < tr.length) {
                         
                         sp = tr[i].id.split("_");
                         
                         if (sp[0] == 'm' && sp[1] == 'a') {
                             id_ = sp.slice(-1)[0];
-                            total_id.push(id_)
+                            total_id.push(parseInt(id_))
                         }
                         i += 1;
                     }
 
-                    total_id.sort();
-                    return next_row = total_id.slice(-1)[0];
+                   total_id.sort((a, b) => a - b).join(', ')
+                   return next_row = total_id.slice(-1)[0];
 
 
                 }
-    
-    
-    function addrow(k,code,condition,id_type,code_type) {
-            
-            st = []
-            t = document.getElementsByTagName("tr"); 
 
-            r = 0;
-            while(r<t.length){
-                if (t[r].id.split("_")[0]==condition){
-                st.push(parseInt(t[r].id.split("_").slice(-1)[0]));}
-            
-            r+=1;
-            }
+                function addrow() {
+                        id_ = parseInt(tr_checker());
+                        id_ += 1;
+                        
+                        var rows = "<tr id='" +'m_a_'+id_+html_row;
+                        document.getElementById(("m_a_" + (id_ - 1))).insertAdjacentHTML("afterend", rows);
 
-            st.sort((a, b) => a - b).join(', ')
+                    var attr = {
+                         
+                         ward_no:"",
+                         visted_arears:"",
+                         account_no:"",
+                         consumer_name:"",
+                         type:"",
+                         con:"",
+                         bill_ammount:"",
+                         paid:"",
+                         monthly_demand:""
+                    }
 
-            last = st.slice(-1)[0] 
-            document.getElementById(id_type+last).insertAdjacentHTML("afterend", code);
-            
-            
-            
-        
-    
-    }
-
-    function meter_aqf(){
-                
-        get_data = {};
-        session = localStorage
-        th_key = []
-
-        Object.keys(session).forEach(key => {
-            
-            if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
-                get_data[key] = JSON.parse(session[key])
-                th_key.push(parseInt(key.split("_").slice(-1)[0]))
-                            }
-                });
-            
-
-                    
-        th_key.sort((a, b) => a - b).join(', ')
-       // document.getElementById("m_a_0").insertAdjacentHTML("afterend", new_id+table);
-        i = 0;
-        while(i<th_key.length){
-            key = "m_a_"+th_key[i];
-            
-            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+table,"m","m_a_");
-
-
-            
-            i+=1
-            
-        }
-
-        pd = 0
-
-        Object.keys(get_data).forEach(key => {
-         
-            document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
-            document.getElementById(key).getElementsByTagName("*").visted_arears.innerHTML = get_data[key]["visted_arears"];
-            document.getElementById(key).getElementsByTagName("*").account_no.innerHTML = get_data[key]["account_no"];
-            document.getElementById(key).getElementsByTagName("*").consumer_name.innerHTML = get_data[key]["consumer_name"];
-            document.getElementById(key).getElementsByTagName("*").type.innerHTML = get_data[key]["type"];
-            document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
-            total_bill = get_data[key]["bill_ammount"];
-            paid = get_data[key]["paid"];
-            pd += parseInt(paid)
-            document.getElementById(key).getElementsByTagName("*").bill_ammount.innerHTML = total_bill;
-            document.getElementById(key).getElementsByTagName("*").paid.innerHTML = paid
-            document.getElementById(key).getElementsByTagName("*").arrears.innerHTML = total_bill - paid;
-
-            
-            document.getElementById(key).getElementsByTagName("*").monthly_demand.innerHTML = get_data[key]["monthly_demand"];
-
-            
-        });
-
-        lst = "m_a_"+th_key.slice(-1)[0];
-        
-        code_ = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_mq'+'">'+total_code_mq
-        
-    
-        flag = add_total(lst,code_)
-        
-        if (flag==1){
-        document.getElementById("totals_acc_mq").innerHTML = th_key.length;
-        document.getElementById("totals_pd_mq").innerHTML = pd;
-        }
-    }
-           
-           
-           
-function disconnect(){
-                
-        get_data = {};
-        dsession = localStorage
-        dis_key = [];
-                    
-        Object.keys(dsession).forEach(key => {
-            
-            if (key.split("_")[0] == "d") {
-                get_data[key] = JSON.parse(dsession[key])
-                dis_key.push(parseInt(key.split("_").slice(-1)[0]))
+                    localStorage.setItem('m_a_' + id_, JSON.stringify(attr));
 
                 }
-                });
-           
-           
-                dis_key.sort((a, b) => a - b).join(', ');
-            
 
-        i = 0;
-        while(i<dis_key.length){
-            key = "d_"+dis_key[i];
-            console.log(key)
+                function remove(tr) {
 
-            addrow(key,'<tr class="table-secondary"  id="'+key+'">'+dis_table,"d","d_");
+                    remove_id = tr.closest("tr").attr("id");
 
+                    localStorage.removeItem(remove_id);
+                    tr.closest("tr").remove();
+                }
 
-            
-            i+=1;
+                function save(id, k, v) {
 
-        }
+                    //data[id] = data[id] || {};
+                    //data[id][k] = v;
 
-            
-           
-           
-           // fill data
-            total_dis_arr = 0;
-            Object.keys(get_data).forEach(key => {
-            document.getElementById(key).getElementsByTagName("*").ward_no.innerHTML = get_data[key]["ward_no"];
-            document.getElementById(key).getElementsByTagName("*").type.innerHTML = get_data[key]["type"];
-            document.getElementById(key).getElementsByTagName("*").account_no.innerHTML = get_data[key]["account_no"];
-            document.getElementById(key).getElementsByTagName("*").arrears.innerHTML = get_data[key]["arrears"];
-            document.getElementById(key).getElementsByTagName("*").con.innerHTML = get_data[key]["con"];
-            document.getElementById(key).getElementsByTagName("*").property_no.innerHTML = get_data[key]["property_no"];
-            document.getElementById(key).getElementsByTagName("*").fir_no.innerHTML = get_data[key]["fir_no"];
-            total_dis_arr += parseInt(get_data[key]["arrears"]);
-
-            
-        });
+                    var temp = JSON.parse(localStorage.getItem(id));
+                    temp[k] = v;
+                    localStorage.setItem(id, JSON.stringify(temp));
 
 
-        lst_d = "d_"+dis_key.slice(-1)[0];
-        code_d = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_dis'+'">'+total_code_dis
-    
-        flag = add_total(lst_d,code_d)
-        if (flag==1){
+
+                    //current_id = x.closest('tr')[0].id 
+                    //console.log(x.closest('tr')[0].getElementsByTagName("*").ward_no.value);
+                }
+
+
+                function store_session() {
+
+                    session = localStorage
+                    session_data = {};
+                    session_keys = [];
                     
 
-        document.getElementById("total_dis_con").innerHTML = dis_key.length;
-        document.getElementById("dis_arrs").innerHTML = total_dis_arr;
-        }
+                    Object.keys(session).forEach(key => {
 
-    
-    }
+                        if (key.split("_")[0] == "m" && key.split("_")[1] == "a") {
+                            session_data[key] = JSON.parse(session[key])
+                            session_keys.push(key.split("_").slice(-1)[0]);
+                            
+                        }
+                    });
+                                          //session_keys.sort();
+                    session_keys.sort((a, b) => a - b).join(', ')
+                    Object.keys(session_keys).forEach(load_key => {
 
+                        add = "<tr id='" + 'm_a_' + session_keys[load_key] + html_row;
+                        document.getElementById('m_a_' + tr_checker()).insertAdjacentHTML("afterend", add);
 
+                        load_data = localStorage.getItem('m_a_' + session_keys[load_key]);
+                        get = JSON.parse(load_data);
 
-meter_aqf();
-    
-disconnect();
+                        browser_data = document.getElementById('m_a_' + session_keys[load_key]).getElementsByTagName("*");
+                        
+                        browser_data.ward_no.value = get.ward_no;
+                        browser_data.visted_arears.value = get.visted_arears;
+                        browser_data.account_no.value = get.account_no;
+                        browser_data.consumer_name.value = get.consumer_name;
+                        browser_data.type.value = get.type;
+                        browser_data.con.value = get.con;
+                        browser_data.bill_ammount.value = get.bill_ammount;
+                        browser_data.paid.value = get.paid;
+                        browser_data.monthly_demand.value = get.monthly_demand;
 
+                    });
+                }
+            
 
-</script>
+        </script>   
+        
+
+</html>
