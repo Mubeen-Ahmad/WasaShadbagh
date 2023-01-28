@@ -23,7 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-
 </head>
 
 <body style="background-color: #212121;color: #fff; font-family: monospace, serif;letter-spacing: 0.05em;">
@@ -50,7 +49,7 @@
                         <a class="nav-link active" href="./generate.html">Submit Report</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="./about.html">About</a>
                     </li>
                 </ul>
                 
@@ -60,16 +59,17 @@
         </div>
     </nav>
 
-    
- 
+    <h3 style="text-align: center;" class="py-2 border border-primary  border-2 rounded-3 text-primary" id="date"></h3>
+<div>  
+                 
+           <h3 style="text-align: center;" class="py-3">Metered & Aquifer Report </h3>
 
-<div>
-                <h3 style="text-align: center;" class="py-3">Metered & Aquifer Report</h3>
-
-    <div class="table-responsive ">
+    <div class="table-responsive clearfix">
 
 
                 <table class="table table-bordered table-condensed" cellpadding="0" cellspacing="0">
+
+                    
 
                     <tbody>
 
@@ -111,7 +111,14 @@
         
                     </tbody>
                 </table>
+
     </div>
+                    <h4 style="text-align: center;" class="py-2 my-3 border border-success  border-2 rounded-4  clearfix">
+                        <b class="text-success" id="totals_ma_acc"></b>
+                        <br> 
+                        <b  class="text-success" id="totals_ma_pd"></b>
+                    </h4>
+
     
 
                     <h3 style="text-align: center;" class="py-3">Disconnections Report</h3>
@@ -148,7 +155,13 @@
         
                     </tbody>
                 </table>
+                
     </div>
+    <h4 style="text-align: center;" class="py-2 my-3 border border-danger  border-2 rounded-4  clearfix">
+                        <b class="text-danger" id="totals_dis_acc"></b>
+                        <br> 
+                        <b  class="text-danger" id="totals_dis_arr"></b>
+                    </h4>
 
 
         
@@ -167,6 +180,15 @@
 
 </body>
 <script>
+
+   var now = new Date();
+    d = now.getDate(); 
+    m = now.getMonth(); m++;
+    y = now.getFullYear();
+    today_date = "Date "+d+"-"+m+"-"+y;
+
+    document.getElementById("date").innerHTML = today_date;
+
     
    
     var table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="visted_arears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="consumer_name" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="bill_ammount" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="paid" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="monthly_demand" style="text-align: center; background-color:#89898f;"></th></tr>'
@@ -174,6 +196,8 @@
 
     var dis_table = '<th scope="col" id="ward_no" style="text-align: center; background-color:#89898f; "></th><th scope="col" id="type" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="account_no" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="arrears" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="con" style="text-align: center; background-color:#89898f;"></th><th scope="col" id="property_no" style="text-align: center; background-color:#89898f;" ></th><th scope="col" id="fir_no" style="text-align: center; background-color:#89898f;"></th</tr>'
     
+
+
     total_code_mq = '<th scope="col"  style="text-align: center; border: none; color:#212529;">.</th><th scope="col"     style="text-align: left;  border: none;">Totals Accounts</th><th scope="col"  style="text-align: center; border: none;" id ="totals_acc_mq">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th><th scope="col"  style="text-align: right; border: none;  color:#212529;">.</th><th scope="col" style="text-align: right; border: none;">Totals</th><th scope="col" style="text-align: left; border: none;">Paid</th><th scope="col" id="totals_pd_mq" style="text-align: center; border: none;">.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;" >.</th><th scope="col"  style="text-align: center; border: none;  color:#212529;">.</th></tr>'  
 
     total_code_dis = '<th scope="col" style="text-align: right; border: none;">Total</th><th scope="col"  style="text-align: Left; border: none;">Disconnections</th><th scope="col" style="text-align: center; border: none; " id="total_dis_con" >.</th><th scope="col"  style="text-align: center; border: none; ">Total Arrears</th><th scope="col" id="dis_arrs" style="text-align: center; border: none;" >.</th><th scope="col" style="text-align: center; border: none; color:#212529;" >.</th><th scope="col" id="fir_no" style="text-align: center; border: none; color:#212529;">.</th</tr>'
@@ -280,8 +304,8 @@
                     downloadAnchorNode.remove();
                     } 
                k1 = Object.keys(merge)[0]
-               
-               downloadObjectAsJson(merge,merge[k1]["ward_no"]);
+                file_name = String(merge[k1]["ward_no"])+"__"+d+"_"+m+"_"+y;
+               downloadObjectAsJson(merge,file_name);
 
         }
 
@@ -390,7 +414,10 @@
             
         });
 
-        lst = "m_a_"+th_key.slice(-1)[0];
+        document.getElementById("totals_ma_acc").innerHTML = "Totals Accounts "+th_key.length;
+        document.getElementById("totals_ma_pd").innerHTML = "Totals Paid "+ String(pd);
+
+       /* lst = "m_a_"+th_key.slice(-1)[0];
         
         code_ = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_mq'+'">'+total_code_mq
         
@@ -400,7 +427,7 @@
         if (flag==1){
         document.getElementById("totals_acc_mq").innerHTML = th_key.length;
         document.getElementById("totals_pd_mq").innerHTML = pd;
-        }
+        }*/
     }
            
            
@@ -455,8 +482,9 @@ function disconnect(){
             
         });
 
-
-        lst_d = "d_"+dis_key.slice(-1)[0];
+        document.getElementById("totals_dis_acc").innerHTML = "Totals Disconnections "+dis_key.length;
+        document.getElementById("totals_dis_arr").innerHTML = "Totals Arrears "+ String(total_dis_arr);
+        /*lst_d = "d_"+dis_key.slice(-1)[0];
         code_d = '<tr class="p-3 mb-2 bg-dark text-white" id="'+'totals_dis'+'">'+total_code_dis
     
         flag = add_total(lst_d,code_d)
@@ -465,7 +493,7 @@ function disconnect(){
 
         document.getElementById("total_dis_con").innerHTML = dis_key.length;
         document.getElementById("dis_arrs").innerHTML = total_dis_arr;
-        }
+        }*/
 
     
     }
@@ -478,3 +506,4 @@ disconnect();
 
 
 </script>
+</html>
